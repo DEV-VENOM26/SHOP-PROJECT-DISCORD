@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHOP PROJECT DISCORD</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #ff0000;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+        h1 {
+            color: white;
+            font-size: 32px;
+            text-transform: uppercase;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            width: 300px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: black;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+        }
+        .card img {
+            width: 50px;
+            margin-bottom: 10px;
+        }
+        .card ul {
+            list-style: none;
+            padding: 0;
+            font-weight: bold;
+            color: #ff0000;
+        }
+        .price {
+            background: #ff0000;
+            color: white;
+            padding: 10px;
+            border-radius: 20px;
+            margin-top: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .price:hover {
+            background: #e60000;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            color: black;
+        }
+        .modal input {
+            display: block;
+            margin: 10px auto;
+            padding: 8px;
+            width: 80%;
+        }
+        .modal button {
+            background: #ff0000;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.close-btn:hover {
+    background-color: darkred;
+}
+    </style>
+    <script>
+        function openModal(price) {
+            document.getElementById('plan').value = price;
+            document.getElementById('modal').style.display = 'block';
+            document.getElementById('close-btn').addEventListener('click', function() {
+    document.getElementById('modal').style.display = 'none';
+});
+
+        }
+        function sendWebhook() {
+            let name = document.getElementById('name').value;
+            let discordID = document.getElementById('discordID').value;
+            let plan = document.getElementById('plan').value;
+            if (name && discordID) {
+                let webhookURL = "YOUR_DISCORD_WEBHOOK_URL";
+                let payload = {
+                    content: `New Order!\nName: ${name}\nDiscord ID: ${discordID}\nPlan: ${plan}`
+                };
+                fetch(webhookURL, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload)
+                }).then(() => {
+                    alert("Order Sent!");
+                    document.getElementById('modal').style.display = 'none';
+                });
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>SHOP PROJECT DISCORD</h1>
+    <div class="container">
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Maker</li>            
+            </ul>
+            <div class="price" onclick="openModal('10M CREDIT')">10M CREDIT</div>
+        </div>
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Cloner</li>
+            </ul>
+            <div class="price" onclick="openModal('5M CREDIT')">5M CREDIT</div>
+        </div>
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Tickets</li>
+            </ul>
+            <div class="price" onclick="openModal('6M CREDIT')">6M CREDIT</div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Tax</li>            
+            </ul>
+            <div class="price" onclick="openModal('5M CREDIT')">5M CREDIT</div>
+        </div>
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Système shop</li>
+            </ul>
+            <div class="price" onclick="openModal('28M CREDIT')">28M CREDIT</div>
+        </div>
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Broadcast</li>
+            </ul>
+            <div class="price" onclick="openModal('8M CREDIT')">8M CREDIT</div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Nuker</li>            
+            </ul>
+            <div class="price" onclick="openModal('15M CREDIT')">15M CREDIT</div>
+        </div>
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Projects all</li>
+            </ul>
+            <div class="price" onclick="openModal('5M CREDIT')">5M CREDIT</div>
+        </div>
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Feedback</li>
+            </ul>
+            <div class="price" onclick="openModal('5M CREDIT')">5M CREDIT</div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Suggestions</li>            
+            </ul>
+            <div class="price" onclick="openModal('5M CREDIT')">5M CREDIT</div>
+        </div>
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Auto Wasit</li>
+            </ul>
+            <div class="price" onclick="openModal('5M CREDIT')">5M CREDIT</div>
+        </div>
+        <div class="card">
+            <img src="boot.png" alt="Logo">
+            <ul>
+                <li>Bot Spin</li>
+            </ul>
+            <div class="price" onclick="openModal('4M CREDIT')">4M CREDIT</div>
+        </div>
+    </div>
+
+
+
+
+    <div id="modal" class="modal">
+        <button class="close-btn" id="close-btn">X</button>
+        <h2>Order Details</h2>
+        <input type="text" id="name" placeholder="Enter your name">
+        <input type="text" id="discordID" placeholder="Enter your Discord ID">
+        <input type="text" id="plan" readonly>
+        <button onclick="sendWebhook()">Submit Order</button>
+    </div>
+</body>
+</html>
